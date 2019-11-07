@@ -1,0 +1,10 @@
+.gridSystem {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-left: 11px;
+    margin-top: 10px;
+}

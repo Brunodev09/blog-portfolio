@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from "react-redux";
 import {
     AppBar,
     Toolbar,
@@ -72,25 +73,25 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const items = [{link: "/#", label: "Posts"}, {link: "/#", label: "Projects"}, {link: "/#", label: "SignIn/Login"}];
+const items = [{link: "/posts", label: "Posts"}, {link: "/projects", label: "Projects"}, {link: "/login", label: "Sign-In/Login"}];
 
-export default function NavbarC() {
+function NavbarC(props) {
     const materialClasses = useStyles();
     const [drawer, setDrawer] = useState(false);
 
     const handleClick = (event) => {
-      console.log(`Clicado -> ${event}`);
+        props.onClickNav(event);
     };
 
     const sideList = () => (
         <div
             className={materialClasses.list}
             role='presentation'
-            onClick={() => setDrawer(false)}
-        >
+            onClick={() => setDrawer(false)}>
+
             <List>
                 {items.map(text => (
-                    <ListItem onClick={handleClick} button key={text.label}>
+                    <ListItem onClick={() => handleClick(text.link)} button key={text.label}>
                         {/* <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                             </ListItemIcon> */}
@@ -142,3 +143,10 @@ export default function NavbarC() {
         </Fragment>
     );
 }
+
+
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+export default connect(mapStateToProps, {  })(NavbarC);
