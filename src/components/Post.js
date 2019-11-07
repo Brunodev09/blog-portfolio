@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Container from './common/Container';
+import Card from "../components/common/Card";
+import Container from "../components/common/Container";
+
 
 export default class Post extends Component {
 
@@ -13,7 +15,7 @@ export default class Post extends Component {
 
     componentWillReceiveProps(next) {
         let { posts } = next;
-        this.setState({posts});
+        this.setState({ posts });
     }
 
     render() {
@@ -22,16 +24,23 @@ export default class Post extends Component {
                 {
                     this.state.posts instanceof Array && this.state.posts.length > 0 ?
                         <div>
+
                             {
                                 this.state.posts.map(post => {
                                     return (
-                                            <p>{post}</p>
+                                        <div style={{ marginLeft: "38%" }}>
+                                            <Card post={post} />
+                                        </div>
                                     );
                                 })
                             }
+
                         </div> : null
                 }
             </div>
         );
     }
 }
+
+
+
