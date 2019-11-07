@@ -1,46 +1,144 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+import React, { Fragment, useState } from 'react';
+import {
+    AppBar,
+    Toolbar,
+    IconButton,
+    Typography,
+    InputBase,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText
+} from '@material-ui/core';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import { Menu as MenuIcon, Search as SearchIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    background: 'blue'
-  },
-  demo: {
-    backgroundColor: '#fcba03',
-  },
-  align: {
-    marginLeft: "1527px"
-  }
+    root: {
+        flexGrow: 1
+    },
+    menuButton: {
+        marginRight: theme.spacing(2)
+    },
+    title: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block'
+        }
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25)
+        },
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
+            width: 'auto'
+        }
+    },
+    searchIcon: {
+        width: theme.spacing(7),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    inputRoot: {
+        color: 'inherit'
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: 120,
+            '&:focus': {
+                width: 200
+            }
+        }
+    },
+    appBar: {
+        background: "#7347ed"
+    },
+    list: {
+        width: 250
+    }
 }));
 
-export default function SimpleTabs() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+const items = [{link: "/#", label: "Posts"}, {link: "/#", label: "Projects"}, {link: "/#", label: "SignIn/Login"}];
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+export default function NavbarC() {
+    const materialClasses = useStyles();
+    const [drawer, setDrawer] = useState(false);
 
-  return (
-    <div>
-      <AppBar className={classes.demo} position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Posts" {...a11yProps(0)} />
-          <Tab className={classes.align} label="Login" {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-    </div>
-  );
+    const handleClick = (event) => {
+      console.log(`Clicado -> ${event}`);
+    };
+
+    const sideList = () => (
+        <div
+            className={materialClasses.list}
+            role='presentation'
+            onClick={() => setDrawer(false)}
+        >
+            <List>
+                {items.map(text => (
+                    <ListItem onClick={handleClick} button key={text.label}>
+                        {/* <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon> */}
+                        <ListItemText primary={text.label} />
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
+
+    return (
+        <Fragment>
+            <Drawer open={drawer} onClose={() => setDrawer(false)}>
+                {sideList()}
+            </Drawer>
+            <AppBar className={materialClasses.appBar} position='static'>
+                <Toolbar>
+                    <IconButton
+                        edge='start'
+                        className={materialClasses.menuButton}
+                        color='inherit'
+                        aria-label='open drawer'
+                        onClick={() => setDrawer(true)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography
+                        className={materialClasses.title}
+                        variant='h6'
+                        noWrap
+                    >
+                        Brunodev's Blog
+                    </Typography>
+                    <div className={materialClasses.search}>
+                        <div className={materialClasses.searchIcon}>
+                            <SearchIcon />
+                        </div>
+                        <InputBase
+                            placeholder='Search…'
+                            classes={{
+                                root: materialClasses.inputRoot,
+                                input: materialClasses.inputInput
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </div>
+                </Toolbar>
+            </AppBar>
+        </Fragment>
+    );
 }

@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         
-          <div style={{ backgroundColor: "#e3e1e1" }}>
+          <div>
             <Header />
             <Post posts={this.mock} />
           </div>
