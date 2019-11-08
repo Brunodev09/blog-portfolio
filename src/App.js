@@ -5,6 +5,7 @@ import './App.css';
 import Post from './components/Post/Post';
 import Header from "./components/common/Header";
 import Container from "./components/common/Container";
+import { ToastContainer, toast } from "react-toastify";
 
 import Login from "./components/Login/Login";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
@@ -42,7 +43,7 @@ class App extends Component {
   render() {
     return (
       <Router history={this.props.history}>
-
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
         <Header onClickNav={this.onClickNav} />
 
         <Switch>

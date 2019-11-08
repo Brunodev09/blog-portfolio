@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import Store, { history } from "./Store";
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(<Provider store={Store}><App history={history} /></Provider>, document.getElementById('root'));
 

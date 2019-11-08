@@ -5,7 +5,7 @@ class Options {
     constructor(method, uri, body) {
         this.method = method;
         this.uri = uri;
-        if (body) this.body = body;
+        if (body) this.json = body;
     }
 }
 
@@ -21,11 +21,11 @@ class Http {
     }
 
     request(method, url, body, headers = {}) {
+        url = `${this.host}${url}`;
         this.setHeader("Content-Type", "application/json");
         for (let header in headers) {
             this.setHeader(header, headers[header]);
         }
-        console.log(this.defaultHeaders);
         try {
             return new Promise((resolve, reject) => {
                request(new Options(method, url, body))
@@ -42,11 +42,11 @@ class Http {
         return this.request("GET", url, null, headers);
     }
 
-    post(url, headers, body) {
+    post(url, body, headers) {
         return this.request("POST", url, body, headers);
     }
 
-    put(url, headers, body) {
+    put(url, body, headers) {
         return this.request("PUT", url, body, headers);
     }
 
@@ -56,6 +56,6 @@ class Http {
 
 }
 
-const httpClient = new Http();
+const httpClient = new Http("https://jsonplaceholder.typicode.com", {"x-code-token": "2IJDSAO281U389U2"});
 
 module.exports = httpClient;

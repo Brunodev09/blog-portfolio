@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Card from "../../components/common/Card";
 import Container from "../../components/common/Container";
+import { toast } from "react-toastify";
+import { getPosts } from "../../actions/post";
 
 import "./Post.css";
 
@@ -30,6 +32,10 @@ class Post extends Component {
     componentWillReceiveProps(next) {
         let { posts } = next;
         this.setState({ posts });
+    }
+
+    componentDidMount() {
+        this.props.getPosts();
     }
 
     render() {
@@ -61,4 +67,4 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps, {  })(Post);
+export default connect(mapStateToProps, { getPosts })(Post);
