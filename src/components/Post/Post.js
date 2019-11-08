@@ -14,7 +14,7 @@ class Post extends Component {
         super(props);
         
         this.state = {
-            posts: props.posts || ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
+            posts: props.postState.posts || ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
@@ -30,7 +30,7 @@ class Post extends Component {
 
 
     componentWillReceiveProps(next) {
-        let { posts } = next;
+        let { postState: {posts} } = next;
         this.setState({ posts });
     }
 
@@ -64,7 +64,8 @@ class Post extends Component {
 
 
 const mapStateToProps = state => ({
-    user: state.user
+    userState: state.user,
+    postState: state.post
 });
 
 export default connect(mapStateToProps, { getPosts })(Post);

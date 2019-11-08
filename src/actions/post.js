@@ -10,34 +10,42 @@ import {
     MESSAGE
 } from './types';
 import {
-    httpClient as http
+    httpUser as http
 } from "../utils/http";
+
+import {
+    setLoading
+} from "./global";
 
 export const getPosts = () => {
     return async (dispatch) => {
 
         try {
-            setLoading(true);
-
+            setLoading(true)(dispatch);
             
-            dispatch({
-                type: GET_POSTS,
-                payload: {}
-            });
+            const request = await http.get("/post");
+            if (request) {
+                dispatch({
+                    type: GET_POSTS,
+                    payload: JSON.parse(request)
+                });
+            }
+            setLoading(false)(dispatch);
         } catch (e) {
             if (e.message) {
+                let err;
+                try {
+                    err = (JSON.parse(e.error)).error;
+                } catch (parseError) {
+                    console.log(parseError)
+                    err = e.message;
+                }
+                console.error(`POSTS_ERROR: ${err}`);
                 dispatch({
                     type: ERROR,
-                    payload: e.message || e
+                    payload: `Error: ${err}`
                 });
             }
         }
-    }
-}
-
-export const setLoading = (bool) => {
-    return {
-        type: SET_LOADING,
-        payload: bool
     }
 }

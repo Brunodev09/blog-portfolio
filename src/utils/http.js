@@ -1,5 +1,5 @@
-// import request from "request-promise";
-const request = require("request-promise");
+import request from "request-promise";
+// const request = require("request-promise");
 
 class Options {
     constructor(method, uri, body) {
@@ -56,6 +56,6 @@ class Http {
 
 }
 
-const httpClient = new Http("https://jsonplaceholder.typicode.com", {"x-code-token": "2IJDSAO281U389U2"});
+export const httpUser = new Http("http://localhost:5000", {});
 
-module.exports = httpClient;
+// module.exports = httpUser;

@@ -123,7 +123,7 @@ function NavbarC(props) {
                         variant='h6'
                         noWrap
                     >
-                        Brunodev's Blog
+                        Teste do Integrador
                     </Typography>
                     <div className={materialClasses.search}>
                         <div className={materialClasses.searchIcon}>

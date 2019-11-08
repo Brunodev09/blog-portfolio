@@ -6,6 +6,7 @@ import Post from './components/Post/Post';
 import Header from "./components/common/Header";
 import Container from "./components/common/Container";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "./components/common/Loader";
 
 import Login from "./components/Login/Login";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
@@ -32,6 +33,8 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    
+  
   }
 
   onClickNav = (destination) => {
@@ -39,12 +42,17 @@ class App extends Component {
     history.push(destination);
   };
 
+  componentWillReceiveProps(next) {
+    
+ }
+
 
   render() {
     return (
       <Router history={this.props.history}>
-        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
         <Header onClickNav={this.onClickNav} />
+        <Loader />
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
 
         <Switch>
             <Route component={Post} exact path="/"/>
@@ -60,7 +68,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  userState: state.user,
+  loadingState: state.loading
 });
 
 export default connect(mapStateToProps, {  })(App);
