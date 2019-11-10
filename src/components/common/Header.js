@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const items = [{link: "/", label: "Posts"}, {link: "/login", label: "Login"}];
+const items = [{link: "/", label: "Posts"}, {link: "/login", label: "Login"}, {link: "/new", label: "New Post"}];
 
 function NavbarC(props) {
     const materialClasses = useStyles();
