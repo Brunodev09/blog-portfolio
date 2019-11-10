@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './App.css';
-
-import Post from './components/Post/Post';
-import Header from "./components/common/Header";
-import Container from "./components/common/Container";
 import { ToastContainer, toast } from "react-toastify";
-import Loader from "./components/common/Loader";
-
-import Login from "./components/Login/Login";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
+
+import Header from "./components/common/Header";
+import Loader from "./components/common/Loader";
+import Post from "./components/Post/Post";
+import New from "./components/New/New";
+import Login from "./components/Login/Login";
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
-      {...args}
-      render={props =>
-          isLogged ? (
-              <Component {...props} />
-          ) : (
-                  <Redirect
-                      to={{
-                          pathname: "/login"
-                      }}
-                  />
-              )
-      }
+    {...args}
+    render={props =>
+      isLogged ? (
+        <Component {...props} />
+      ) : (
+          <Redirect
+            to={{
+              pathname: "/login"
+            }}
+          />
+        )
+    }
   />
 );
 
@@ -33,8 +32,8 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    
-  
+
+
   }
 
   onClickNav = (destination) => {
@@ -43,26 +42,26 @@ class App extends Component {
   };
 
   componentWillReceiveProps(next) {
-    
- }
+
+  }
 
 
   render() {
     return (
       <Router history={this.props.history}>
-        <Header onClickNav={this.onClickNav} />
+        <div className="customHeader">
+          <Header onClickNav={this.onClickNav} />
+        </div>
         <Loader />
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
 
         <Switch>
-            <Route component={Post} exact path="/"/>
-            <Route component={Login} exact path="/login"/>
+          <Route component={Post} exact path="/" />
+          <Route component={Login} exact path="/login" />
+          <Route component={New} exact path="/new" />
         </Switch>
-        <div className="App">
-          
-      </div>
       </Router>
-      
+
     );
   }
 }
@@ -72,5 +71,5 @@ const mapStateToProps = state => ({
   loadingState: state.loading
 });
 
-export default connect(mapStateToProps, {  })(App);
+export default connect(mapStateToProps, {})(App);
 

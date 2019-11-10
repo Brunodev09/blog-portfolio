@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import InputCard from "../common/InputCard";
+import PostCard from "../common/PostCard";
 import { setLoading } from "../../actions/global";
-import "./Login.css";
+import "./New.css";
 
-class Login extends Component {
+class New extends Component {
 
     constructor(props) {
         super(props);
@@ -20,8 +20,8 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="loginCard">
-                <InputCard />
+            <div className="newCard">
+                <PostCard />
             </div>
         );
     }
@@ -32,6 +32,6 @@ const mapStateToProps = state => ({
     loadingState: state.loading
 });
 
-export default connect(mapStateToProps, { setLoading })(Login);
+export default connect(mapStateToProps, { setLoading })(New);
 
 

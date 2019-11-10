@@ -17,6 +17,8 @@ import {
     setLoading
 } from "./global";
 
+// @TODO - Add a custom token to be able to request to my API
+
 export const getPosts = () => {
     return async (dispatch) => {
 
