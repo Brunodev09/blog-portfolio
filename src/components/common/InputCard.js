@@ -9,17 +9,15 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 
-
-
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 545,
         maxHeight: 545,
-        width: "100%",
-        height: "100%"
+        width: '100%',
+        height: '44%'
     },
     media: {
-        height: 540,
+        height: 540
     },
     btn1: {
         display: 'flex',
@@ -28,21 +26,20 @@ const useStyles = makeStyles(theme => ({
     },
     container: {
         display: 'flex',
-        flexWrap: 'wrap',
+        flexWrap: 'wrap'
     },
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: 320,
+        width: 320
     },
     button: {
-        backgroundColor: "#7347ed",
-        width: "75%",
-        marginLeft: "13%",
-        marginTop: "5%"
+        backgroundColor: '#7347ed',
+        width: '75%',
+        marginLeft: '13%',
+        marginTop: '5%'
     }
 }));
-
 
 export default function InputCard(props) {
     const classes = useStyles();
@@ -51,44 +48,52 @@ export default function InputCard(props) {
     return (
         <Card className={classes.card}>
             <CardActionArea>
-
                 <CardContent>
-                    <Typography style={{ textAlign: "center", fontSize: "18px" }} variant="body2" color="textSecondary" component="h1">
+                    <Typography
+                        style={{ textAlign: 'center', fontSize: '18px' }}
+                        variant='body2'
+                        color='textSecondary'
+                        component='h1'
+                    >
                         Enter your login information
-          </Typography>
-
+                    </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.btn1}>
-                <div style={{ display: "flex", flexWrap: "wrap", flexDirection: "column" }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        flexDirection: 'column'
+                    }}
+                >
                     <TextField
-                        id="outlined-basic"
+                        id='outlined-basic'
                         className={classes.textField}
-                        label="E-mail"
-                        margin="normal"
-                        variant="outlined"
+                        label='E-mail'
+                        margin='normal'
+                        variant='outlined'
                     />
                     <TextField
-                        id="outlined-basic"
+                        id='outlined-basic'
                         className={classes.textField}
-                        label="Password"
-                        margin="normal"
-                        variant="outlined"
-                        type="password"
+                        label='Password'
+                        margin='normal'
+                        variant='outlined'
+                        type='password'
                     />
-                    
+
                     <Button
-                        variant="contained"
-                        color="#7347ed"
+                        variant='contained'
+                        color='#7347ed'
                         startIcon={<Icon>send</Icon>}
-                        type="submit"
+                        type='submit'
                         className={classes.button}
-                        color="primary"
+                        color='primary'
                     >
                         Login
-                 </Button>
+                    </Button>
                 </div>
-
             </CardActions>
         </Card>
     );

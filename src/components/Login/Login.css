@@ -1,11 +1,6 @@
 .loginCard {
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center; */
-    width: 100%;
-    height: 30%;
-    margin-left: 35%;
-    margin-top: 15%;
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 64px);
 }
