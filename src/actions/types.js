@@ -1,4 +1,5 @@
 export const USER = "user";
+export const GET_TOKEN = "get_token";
 
 export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";

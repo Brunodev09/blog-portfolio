@@ -73,15 +73,24 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const items = [
-    { link: '/', label: 'Posts' },
-    { link: '/login', label: 'Login' },
-    { link: '/new', label: 'New Post' }
-];
 
 function NavbarC(props) {
     const materialClasses = useStyles();
     const [drawer, setDrawer] = useState(false);
+
+    let items = [{ link: '/', label: 'Posts' }];
+
+    if (props.user && props.user.token) {
+        items.push({ link: '/new', label: 'New Post' });
+        let index = items.findIndex(item => item.label === "Login");
+        if (index) items.splice(index, 1);
+        index = items.findIndex(item => item.label === "Register");
+        if (index) items.splice(index, 1);
+    }
+    else {
+        items.push({ link: '/login', label: 'Login' });
+        items.push({ link: '/register', label: 'Register' });
+    } 
 
     const handleClick = event => {
         props.onClickNav(event);

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import InputCard from "../common/InputCard";
-import { setLoading } from "../../actions/global";
+import { setLoading, msg } from "../../actions/global";
+import { getUser } from "../../actions/user";
 import "./Login.css";
 
 class Login extends Component {
@@ -18,10 +19,16 @@ class Login extends Component {
         }
     }
 
+    onHandle = (user, pw) => {
+        if (!user || !pw) return msg("Please fill all the required fields.");
+        console.log(user, pw);
+        return this.props.getUser(user, pw);
+    };
+
     render() {
         return (
             <div className="loginCard">
-                <InputCard />
+                <InputCard onHandle={this.onHandle} />
             </div>
         );
     }
@@ -32,6 +39,6 @@ const mapStateToProps = state => ({
     loadingState: state.loading
 });
 
-export default connect(mapStateToProps, { setLoading })(Login);
+export default connect(mapStateToProps, { setLoading, msg, getUser })(Login);
 
 

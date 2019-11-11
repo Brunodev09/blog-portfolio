@@ -2,7 +2,9 @@ import { USER } from '../actions/types';
 
 
 const initialState = {
-    "userId": ""
+    "userId": "",
+    "email": "",
+    "token": ""
 };
 
 export default (state = initialState, action) => {
@@ -10,8 +12,11 @@ export default (state = initialState, action) => {
         case USER:
             return {
                 ...state,
-                "userId": action.payload._id,
-            }   
+                "userId": action.payload.user._id,
+                "userName": action.payload.user.name,
+                "email": action.payload.user.email,
+                "token": action.payload.user.token
+            }      
         default:
             return state;
     }

@@ -9,6 +9,8 @@ import Loader from "./components/common/Loader";
 import Post from "./components/Post/Post";
 import New from "./components/New/New";
 import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
@@ -32,7 +34,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      user: null
+    }
 
   }
 
@@ -42,7 +46,16 @@ class App extends Component {
   };
 
   componentWillReceiveProps(next) {
+    let { userState } = next;
 
+    if (userState && userState.user && (!this.props.userState || !this.props.userState.user)) {
+      this.props.history.push("/");
+      return this.setState({user: userState.user});
+    } 
+
+  }
+
+  componentDidMount() {
   }
 
 
@@ -50,7 +63,7 @@ class App extends Component {
     return (
       <Router history={this.props.history}>
         <div className="customHeader">
-          <Header onClickNav={this.onClickNav} />
+          <Header user={this.state.user} onClickNav={this.onClickNav} />
         </div>
         <Loader />
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
@@ -59,6 +72,7 @@ class App extends Component {
           <Route component={Post} exact path="/" />
           <Route component={Login} exact path="/login" />
           <Route component={New} exact path="/new" />
+          <Route component={Register} exact path="/register" />
         </Switch>
       </Router>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 545,
         maxHeight: 545,
         width: '100%',
-        height: '44%'
+        height: '68%'
     },
     media: {
         height: 540
@@ -41,11 +41,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function InputCard(props) {
+export default function RegisterCard(props) {
     const classes = useStyles();
     //   let { post } = props;
-    const [user, setUser] = useState(null);
-    const [password, setPassword] = useState(null);
 
     return (
         <Card className={classes.card}>
@@ -56,7 +54,7 @@ export default function InputCard(props) {
                         variant='body2'
                         color='textSecondary'
                         component='h1'>
-                        Enter your login information
+                        Please fill the required information to create an account
                     </Typography>
                 </CardContent>
             </CardActionArea>
@@ -71,11 +69,16 @@ export default function InputCard(props) {
                     <TextField
                         id='outlined-basic'
                         className={classes.textField}
+                        label='Name'
+                        margin='normal'
+                        variant='outlined'
+                    />
+                    <TextField
+                        id='outlined-basic'
+                        className={classes.textField}
                         label='E-mail'
                         margin='normal'
                         variant='outlined'
-                        onChange={(evt) => setUser(user + evt.target.value)}
-
                     />
                     <TextField
                         id='outlined-basic'
@@ -84,7 +87,14 @@ export default function InputCard(props) {
                         margin='normal'
                         variant='outlined'
                         type='password'
-                        onChange={(evt) => setPassword(password + evt.target.value)}
+                    />
+                    <TextField
+                        id='outlined-basic'
+                        className={classes.textField}
+                        label='Repeat password'
+                        margin='normal'
+                        variant='outlined'
+                        type='password'
                     />
 
                     <Button
@@ -94,9 +104,8 @@ export default function InputCard(props) {
                         type='submit'
                         className={classes.button}
                         color='primary'
-                        onClick={() => props.onHandle(user, password)}
                     >
-                        Login
+                        Register
                     </Button>
                 </div>
             </CardActions>
