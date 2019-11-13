@@ -8,13 +8,13 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
-
+import Selector from "../common/Selector";
 
 
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 645,
-        maxHeight: 645,
+        maxHeight: 700,
         width: "100%",
         height: "100%"
     },
@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 export default function InputCardPost(props) {
     const classes = useStyles();
     //   let { post } = props;
+    const opts = ["GENERAL", "PROGRAMMING", "PHILOSOPHY", "DREAMS", "LISTS"];
 
     return (
         <Card className={classes.card}>
@@ -81,7 +82,7 @@ export default function InputCardPost(props) {
                         multiline
                         rows="20"
                     />
-                    
+                    <div style={{marginBottom: "5%"}}><Selector label={"Categoria"} opts={opts} /></div>
                     <Button
                         variant="contained"
                         color="#7347ed"

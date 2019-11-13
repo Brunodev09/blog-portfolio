@@ -14,24 +14,23 @@ class Post extends Component {
         super(props);
         
         this.state = {
-            posts: props.postState.posts || ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in maximus nisl, nec laoreet nulla. Sed hendrerit, eros ut ornare rhoncus, mi nibh aliquet est, eget gravida risus metus eget orci. Phasellus pellentesque viverra vehicula. Curabitur malesuada efficitur pharetra. Fusce at augue vitae neque dapibus pellentesque. Morbi eros nunc, facilisis in tellus a, sodales finibus lorem. Praesent turpis eros, eleifend eget venenatis eu, dapibus quis tellus. Nam aliquet, quam ut faucibus placerat, lacus urna varius libero, nec hendrerit nisl tortor a ante. Fusce laoreet hendrerit leo eget auctor. Duis purus leo, faucibus malesuada eleifend ac, rhoncus in ex.",
-       
-           ]
+            posts: props.postState.posts  
         }
+        this.searchState =  ""
     }
 
 
     componentWillReceiveProps(next) {
-        let { postState: {posts} } = next;
+        let { postState: {posts}, search } = next;
         this.setState({ posts });
+
+        if (this.searchState !== search) {
+            let filterCategory = this.state.posts.filter(p => (p.category || "").includes(this.props.search));
+            let filterTitle = this.state.posts.filter(p => (p.title || "").includes(this.props.search));
+            let aux = {...this.state};
+            aux.posts = [...filterTitle, ...filterCategory];
+            this.setState({posts: aux.posts});
+        }
     }
 
     componentDidMount() {

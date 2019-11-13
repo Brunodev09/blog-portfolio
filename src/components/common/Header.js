@@ -80,6 +80,10 @@ function NavbarC(props) {
 
     let items = [{ link: '/', label: 'Posts' }];
 
+    const handleSearch = (char) => {
+        props.search(char);
+    };
+
     if (props.user.token) {
         if (props.user.developer) items.push({ link: '/new', label: 'New Post' });
         items.push({ link: '/profile', label: `${props.user.userName}'s profile`});
@@ -163,6 +167,7 @@ function NavbarC(props) {
                                 input: materialClasses.inputInput
                             }}
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={(evt) => handleSearch(evt.target.value)}
                         />
                         
                     </div>

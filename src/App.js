@@ -35,7 +35,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      search: ""
     }
 
   }
@@ -43,6 +44,10 @@ class App extends Component {
   onClickNav = (destination) => {
     let { history } = this.props;
     history.push(destination);
+  };
+
+  search = (char) => {
+    this.setState({search: char});
   };
 
   componentWillReceiveProps(next) {
@@ -62,13 +67,13 @@ class App extends Component {
     return (
       <Router history={this.props.history}>
         <div className="customHeader">
-          <Header user={this.state.user} onClickNav={this.onClickNav} />
+          <Header search={this.search} user={this.state.user} onClickNav={this.onClickNav} />
         </div>
         <Loader />
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
 
         <Switch>
-          <Route component={Post} exact path="/" />
+          <Route render={() => (<Post search={this.state.search} />)} exact path="/" />
           <Route component={Login} exact path="/login" />
           <Route component={New} exact path="/new" />
           <Route component={Register} exact path="/register" />

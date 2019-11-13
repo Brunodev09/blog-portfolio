@@ -109,7 +109,6 @@ export default function RegisterCard(props) {
                         onChange={(evt) => setPassword2(evt.target.value)}
 
                     />
-
                     <Button
                         variant='contained'
                         color='#7347ed'
