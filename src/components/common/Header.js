@@ -80,17 +80,21 @@ function NavbarC(props) {
 
     let items = [{ link: '/', label: 'Posts' }];
 
-    if (props.user && props.user.token) {
-        items.push({ link: '/new', label: 'New Post' });
+    if (props.user.token) {
+        if (props.user.developer) items.push({ link: '/new', label: 'New Post' });
+        items.push({ link: '/profile', label: `${props.user.userName}'s profile`});
+        items.push({ link: '/logout', label: "Logout"});
         let index = items.findIndex(item => item.label === "Login");
-        if (index) items.splice(index, 1);
+        if (index > 0) items.splice(index, 1);
         index = items.findIndex(item => item.label === "Register");
-        if (index) items.splice(index, 1);
+        if (index > 0) items.splice(index, 1);
     }
     else {
         items.push({ link: '/login', label: 'Login' });
         items.push({ link: '/register', label: 'Register' });
-    } 
+    }
+    
+    items.push({ link: '/about', label: 'About' });
 
     const handleClick = event => {
         props.onClickNav(event);
@@ -142,6 +146,12 @@ function NavbarC(props) {
                     >
                         Teste do Integrador
                     </Typography>
+                    {props.user && props.user.token ? <Typography
+                        variant='h6'
+                        noWrap
+                        >
+                        Logged as {props.user.userName}
+                    </Typography> : null}
                     <div className={materialClasses.search}>
                         <div className={materialClasses.searchIcon}>
                             <SearchIcon />
@@ -154,6 +164,7 @@ function NavbarC(props) {
                             }}
                             inputProps={{ 'aria-label': 'search' }}
                         />
+                        
                     </div>
                 </Toolbar>
             </AppBar>

@@ -74,7 +74,7 @@ export default function InputCard(props) {
                         label='E-mail'
                         margin='normal'
                         variant='outlined'
-                        onChange={(evt) => setUser(user + evt.target.value)}
+                        onChange={(evt) => setUser(evt.target.value)}
 
                     />
                     <TextField
@@ -84,7 +84,7 @@ export default function InputCard(props) {
                         margin='normal'
                         variant='outlined'
                         type='password'
-                        onChange={(evt) => setPassword(password + evt.target.value)}
+                        onChange={(evt) => setPassword(evt.target.value)}
                     />
 
                     <Button

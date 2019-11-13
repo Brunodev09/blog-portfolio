@@ -10,7 +10,7 @@ import Post from "./components/Post/Post";
 import New from "./components/New/New";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-
+import Logout from "./components/Logout/Logout";
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
@@ -47,8 +47,7 @@ class App extends Component {
 
   componentWillReceiveProps(next) {
     let { userState } = next;
-
-    if (userState && userState.user && (!this.props.userState || !this.props.userState.user)) {
+    if (userState && userState.token && (!this.props.userState || !this.props.userState.token)) {
       this.props.history.push("/");
       return this.setState({user: userState.user});
     } 
@@ -73,6 +72,7 @@ class App extends Component {
           <Route component={Login} exact path="/login" />
           <Route component={New} exact path="/new" />
           <Route component={Register} exact path="/register" />
+          <Route component={Logout} exact path="/logout" />
         </Switch>
       </Router>
 

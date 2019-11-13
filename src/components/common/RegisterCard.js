@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -45,6 +45,11 @@ export default function RegisterCard(props) {
     const classes = useStyles();
     //   let { post } = props;
 
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [password2, setPassword2] = useState(null);
+
     return (
         <Card className={classes.card}>
             <CardActionArea>
@@ -72,6 +77,8 @@ export default function RegisterCard(props) {
                         label='Name'
                         margin='normal'
                         variant='outlined'
+                        onChange={(evt) => setName(evt.target.value)}
+
                     />
                     <TextField
                         id='outlined-basic'
@@ -79,6 +86,8 @@ export default function RegisterCard(props) {
                         label='E-mail'
                         margin='normal'
                         variant='outlined'
+                        onChange={(evt) => setEmail(evt.target.value)}
+
                     />
                     <TextField
                         id='outlined-basic'
@@ -87,6 +96,8 @@ export default function RegisterCard(props) {
                         margin='normal'
                         variant='outlined'
                         type='password'
+                        onChange={(evt) => setPassword(evt.target.value)}
+
                     />
                     <TextField
                         id='outlined-basic'
@@ -95,6 +106,8 @@ export default function RegisterCard(props) {
                         margin='normal'
                         variant='outlined'
                         type='password'
+                        onChange={(evt) => setPassword2(evt.target.value)}
+
                     />
 
                     <Button
@@ -104,6 +117,8 @@ export default function RegisterCard(props) {
                         type='submit'
                         className={classes.button}
                         color='primary'
+                        onClick={() => props.onHandle(name, email, password, password2)}
+
                     >
                         Register
                     </Button>

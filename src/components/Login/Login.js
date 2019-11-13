@@ -20,8 +20,7 @@ class Login extends Component {
     }
 
     onHandle = (user, pw) => {
-        if (!user || !pw) return msg("Please fill all the required fields.");
-        console.log(user, pw);
+        if (!user || !pw) return this.props.msg({type: "warning", message: "Please fill all the required fields."});
         return this.props.getUser(user, pw);
     };
 
