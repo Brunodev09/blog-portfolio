@@ -12,6 +12,9 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 
+require('dotenv').config()
+
+
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
     {...args}
@@ -41,15 +44,6 @@ class App extends Component {
 
   }
 
-  onClickNav = (destination) => {
-    let { history } = this.props;
-    history.push(destination);
-  };
-
-  search = (char) => {
-    this.setState({search: char});
-  };
-
   componentWillReceiveProps(next) {
     let { userState } = next;
     if (userState && userState.token && (!this.props.userState || !this.props.userState.token)) {
@@ -58,6 +52,15 @@ class App extends Component {
     } 
 
   }
+
+  onClickNav = (destination) => {
+    let { history } = this.props;
+    history.push(destination);
+  };
+
+  search = (char) => {
+    this.setState({search: char});
+  };
 
   componentDidMount() {
   }
@@ -73,13 +76,15 @@ class App extends Component {
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
 
         <Switch>
-          <Route render={() => (<Post search={this.state.search} />)} exact path="/" />
+          <Route render={() => (<Redirect to={{pathname: "/posts"}} />)} exact path="/" />
+          <Route render={() => (<Post search={this.state.search} />)} exact path="/posts" />
+          {/* <Route component={PostDetail} exact path="/posts/:id" /> */}
           <Route component={Login} exact path="/login" />
           <Route component={New} exact path="/new" />
           <Route component={Register} exact path="/register" />
           <Route component={Logout} exact path="/logout" />
         </Switch>
-      </Router>
+      </Router> 
 
     );
   }

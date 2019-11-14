@@ -45,7 +45,7 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.btn1}>
-        <Button size="small" color="primary">
+        <Button style={{width: '100%'}} size="small" color="primary">
           Read more
         </Button>
       </CardActions>

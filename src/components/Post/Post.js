@@ -37,6 +37,10 @@ class Post extends Component {
         this.props.getPosts();
     }
 
+    showPost = post => {
+        
+    };
+
     render() {
         return (
             <div>
@@ -47,7 +51,7 @@ class Post extends Component {
                             {
                                 this.state.posts.map(post => {
                                     return (
-                                        <div className="card">
+                                        <div onClick={this.showPost(post)} className="card">
                                             <Card onClickNav={this.onClickNav} post={post} />
                                         </div>
                                     );
