@@ -30,6 +30,9 @@ export default function MediaCard(props) {
   return (
     <Card className={classes.card}>
       <CardActionArea>
+        <p style={{ textAlign: "center" }}>
+          {`[${(post.category || "general").toUpperCase()}]`}
+        </p>
         <CardMedia
           className={classes.media}
           // image={Image}
@@ -37,15 +40,16 @@ export default function MediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            { post.title }
+            {post.title}
           </Typography>
+
           <Typography variant="body2" color="textSecondary" component="p">
-            { post.body.length < 150 ? post.body : `${post.body.substring(0, 150)}...` }
+            {post.body.length < 150 ? post.body : `${post.body.substring(0, 150)}...`}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.btn1}>
-        <Button style={{width: '100%'}} size="small" color="primary">
+        <Button style={{ width: '100%' }} size="small" color="primary">
           Read more
         </Button>
       </CardActions>

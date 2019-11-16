@@ -11,7 +11,6 @@ class New extends Component {
         super(props);
     }
 
-
     componentDidMount() {
         if (this.props.loadingState.loading) {
             this.props.setLoading(false);

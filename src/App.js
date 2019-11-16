@@ -11,9 +11,11 @@ import New from "./components/New/New";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
+import Detail from "./components/Detail/Detail";
 
 require('dotenv').config()
 
+// @TODO - Fazer um map para posts para que desta forma seja feita apenas um get.
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
@@ -77,8 +79,8 @@ class App extends Component {
 
         <Switch>
           <Route render={() => (<Redirect to={{pathname: "/posts"}} />)} exact path="/" />
-          <Route render={() => (<Post search={this.state.search} />)} exact path="/posts" />
-          {/* <Route component={PostDetail} exact path="/posts/:id" /> */}
+          <Route render={() => (<Post history={this.props.history} search={this.state.search} />)} exact path="/posts" />
+          <Route component={Detail} exact path="/posts/:id" />
           <Route component={Login} exact path="/login" />
           <Route component={New} exact path="/new" />
           <Route component={Register} exact path="/register" />

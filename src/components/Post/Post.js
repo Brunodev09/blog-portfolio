@@ -4,6 +4,7 @@ import Card from "../../components/common/Card";
 import Container from "../../components/common/Container";
 import { toast } from "react-toastify";
 import { getPosts } from "../../actions/post";
+import { msg } from "../../actions/global";
 
 import "./Post.css";
 
@@ -38,7 +39,10 @@ class Post extends Component {
     }
 
     showPost = post => {
-        
+        if (post._id) {
+            return this.props.history.push(`/posts/${post._id}`);
+        }
+        return msg({type: "warning", message: "Could not find this post ID on my database!"});
     };
 
     render() {
@@ -51,8 +55,8 @@ class Post extends Component {
                             {
                                 this.state.posts.map(post => {
                                     return (
-                                        <div onClick={this.showPost(post)} className="card">
-                                            <Card onClickNav={this.onClickNav} post={post} />
+                                        <div onClick={() => this.showPost(post)} className="card">
+                                            <Card post={post} />
                                         </div>
                                     );
                                 })
@@ -71,4 +75,4 @@ const mapStateToProps = state => ({
     postState: state.post
 });
 
-export default connect(mapStateToProps, { getPosts })(Post);
+export default connect(mapStateToProps, { getPosts, msg })(Post);
