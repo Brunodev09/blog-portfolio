@@ -30,10 +30,14 @@ class Detail extends Component {
 
     }
 
+    handleReturn = () => {
+        this.props.history.push("/posts");
+    };
+
     render() {
         return (
             <div className="registerCard">
-                <DetailCard user={this.props.userState} post={this.state.post} />
+                <DetailCard handleReturn={this.handleReturn} user={this.props.userState} post={this.state.post} />
             </div>
         );
     }

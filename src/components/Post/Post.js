@@ -35,7 +35,7 @@ class Post extends Component {
     }
 
     componentDidMount() {
-        this.props.getPosts();
+        if (!this.props.postState || !this.props.postState.posts || !this.props.postState.posts.length) this.props.getPosts();
     }
 
     showPost = post => {

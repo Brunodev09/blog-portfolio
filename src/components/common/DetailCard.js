@@ -11,8 +11,8 @@ import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles(theme => ({
     card: {
-        maxWidth: 545,
-        maxHeight: 545,
+        maxWidth: 845,
+        maxHeight: 845,
         width: '100%',
         height: '68%'
     },
@@ -31,22 +31,48 @@ const useStyles = makeStyles(theme => ({
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: 320
+        width: 620
     },
     button: {
         backgroundColor: '#7347ed',
         width: '75%',
         marginLeft: '13%',
         marginTop: '5%'
+    },
+    button2: {
+        backgroundColor: '#7347ed',
+        width: '5%',
     }
 }));
 
 export default function DetailCard(props) {
     const classes = useStyles();
-    //   let { post } = props;
-    console.log(props)
+    const [edit, setEdit] = useState(null);
+
+    const handleReturn = () => {
+        props.handleReturn();
+    };
+
+    const handleEdit = (bool) => {
+        setEdit(bool);
+    };
+
+
     return (
         <Card className={classes.card}>
+            <div style={{ cursor: "pointer" }} >
+                <Button
+                    variant='contained'
+                    color='#7347ed'
+                    type='submit'
+                    className={classes.button2}
+                    color='primary'
+                    onClick={() => handleReturn()}
+                    startIcon={<Icon>arrow_back</Icon>}
+
+                >
+                </Button>
+            </div>
             <CardActionArea>
                 <CardContent>
                     <Typography
@@ -54,7 +80,7 @@ export default function DetailCard(props) {
                         variant='body2'
                         color='textSecondary'
                         component='h1'>
-                        {(props.post || {title: "Loading..."}).title}
+                        {(props.post || { title: "Loading..." }).title}
                     </Typography>
                 </CardContent>
             </CardActionArea>
@@ -63,39 +89,47 @@ export default function DetailCard(props) {
                     style={{
                         display: 'flex',
                         flexWrap: 'wrap',
-                        flexDirection: 'row'
-                    }}
-                >
+                        flexDirection: 'row',
+                    }}>
                     <p>
-                        {(props.post || {body: "Loading..."}).body}
+                        {edit ? <TextField
+                                id='outlined-basic'
+                                className={classes.textField}
+                                label='Edit'
+                                margin='normal'
+                                variant='outlined'
+                                multiline
+                                rows="20"
+                                value={(props.post || { body: "Loading..." }).body}
+                            /> : (props.post || { body: "Loading..." }).body
+                            }
                     </p>
                     {
-                    props.userState && props.userState.developer ?
-                    <div>
-                    <Button
-                    variant='contained'
-                    color='#7347ed'
-                    startIcon={<Icon>send</Icon>}
-                    type='submit'
-                    className={classes.button}
-                    color='primary'
-                    // onClick={() => props.onHandle(name, email, password, password2)}
-                >
-                    Edit
-                </Button>
-                <Button
-                    variant='contained'
-                    color='#7347ed'
-                    startIcon={<Icon>send</Icon>}
-                    type='submit'
-                    className={classes.button}
-                    color='primary'
-                    // onClick={() => props.onHandle(name, email, password, password2)}
-                >
-                    Delete
-                </Button> </div>
-                    : null}
-                    
+                        props.user && (props.user || { developer: false }).developer ?
+                            <div style={{ display: 'flex', width: "50%", marginTop: !edit ? "30%" : "0%", marginLeft: "20%" }}>
+                                <Button
+                                    variant='contained'
+                                    color='#7347ed'
+                                    startIcon={<Icon>create</Icon>}
+                                    className={classes.button}
+                                    color='primary'
+                                    onClick={() => handleEdit(true)}
+                                >
+                                    {!edit ? <div>Edit</div> : <div>Update</div>}
+                             </Button>
+                                <Button
+                                    variant='contained'
+                                    color='#7347ed'
+                                    startIcon={<Icon>delete</Icon>}
+                                    className={classes.button}
+                                    color='primary'
+                                    // onClick={() => props.onHandle(name, email, password, password2)}
+                                >
+                                    {!edit ? <div>Delete</div> : <div>Cancel edit</div>}
+                             </Button>
+                            </div>
+                            : null}
+
                 </div>
             </CardActions>
         </Card>

@@ -15,8 +15,6 @@ import Detail from "./components/Detail/Detail";
 
 require('dotenv').config()
 
-// @TODO - Fazer um map para posts para que desta forma seja feita apenas um get.
-
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
     {...args}
@@ -50,8 +48,8 @@ class App extends Component {
     let { userState } = next;
     if (userState && userState.token && (!this.props.userState || !this.props.userState.token)) {
       this.props.history.push("/");
-      return this.setState({user: userState.user});
-    } 
+      return this.setState({ user: userState.user });
+    }
 
   }
 
@@ -61,7 +59,7 @@ class App extends Component {
   };
 
   search = (char) => {
-    this.setState({search: char});
+    this.setState({ search: char });
   };
 
   componentDidMount() {
@@ -78,7 +76,7 @@ class App extends Component {
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
 
         <Switch>
-          <Route render={() => (<Redirect to={{pathname: "/posts"}} />)} exact path="/" />
+          <Route render={() => (<Redirect to={{ pathname: "/posts" }} />)} exact path="/" />
           <Route render={() => (<Post history={this.props.history} search={this.state.search} />)} exact path="/posts" />
           <Route component={Detail} exact path="/posts/:id" />
           <Route component={Login} exact path="/login" />
@@ -86,7 +84,7 @@ class App extends Component {
           <Route component={Register} exact path="/register" />
           <Route component={Logout} exact path="/logout" />
         </Switch>
-      </Router> 
+      </Router>
 
     );
   }

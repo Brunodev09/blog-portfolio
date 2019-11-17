@@ -82,7 +82,7 @@ export default function InputCardPost(props) {
                         multiline
                         rows="20"
                     />
-                    <div style={{marginBottom: "5%"}}><Selector label={"Categoria"} opts={opts} /></div>
+                    <div style={{marginBottom: "5%"}}><Selector label={"Category"} opts={opts} /></div>
                     <Button
                         variant="contained"
                         color="#7347ed"
