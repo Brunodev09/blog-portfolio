@@ -8,6 +8,7 @@ import { msg } from "../../actions/global";
 
 import "./Post.css";
 
+// @TODO - Fix the merging of arrays in the search with a id mapping
 
 class Post extends Component {
 
