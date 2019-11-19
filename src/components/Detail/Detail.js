@@ -36,7 +36,7 @@ class Detail extends Component {
 
     render() {
         return (
-            <div className="registerCard">
+            <div style={{display: "flex", placeItems: "center", placeContent: "center"}}>
                 <DetailCard handleReturn={this.handleReturn} user={this.props.userState} post={this.state.post} />
             </div>
         );
