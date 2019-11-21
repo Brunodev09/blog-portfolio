@@ -32,7 +32,8 @@ const useStyles = makeStyles(theme => ({
 	textField: {
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
-		width: 620
+		width: 720,
+		width: '98%'
 	},
 	button: {
 		backgroundColor: '#7347ed',
@@ -128,14 +129,18 @@ export default function DetailCard(props) {
 				)}
 			</Card>
 			<Card>
-				<TextField
-					id='outlined-basic'
-					className={classes.textField}
-					label='Comments'
-					margin='normal'
-					variant='outlined'
-					multiline
-				/>
+				{props.user && props.user.token ? (
+					<TextField
+						id='outlined-basic'
+						className={classes.textField}
+						label='Comments'
+						margin='normal'
+						variant='outlined'
+						multiline
+					/>
+				) : (
+					''
+				)}
 
 				{(
 					props.post || {
