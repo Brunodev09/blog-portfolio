@@ -59,70 +59,128 @@ export default function DetailCard(props) {
 	};
 
 	return (
-		<Card className={classes.card}>
-			<CardActionArea>
-				<Button
-					variant='contained'
-					color='#7347ed'
-					type='submit'
-					className={classes.button2}
-					color='primary'
-					onClick={() => handleReturn()}
-					startIcon={<Icon>arrow_back</Icon>}></Button>
-				<CardMedia
-					className={classes.media}
-					image='/static/images/cards/contemplative-reptile.jpg'
-					title='Contemplative Reptile'
+		<div>
+			<Card className={classes.card}>
+				<CardActionArea>
+					<Button
+						variant='contained'
+						color='#7347ed'
+						type='submit'
+						className={classes.button2}
+						color='primary'
+						onClick={() => handleReturn()}
+						startIcon={<Icon>arrow_back</Icon>}></Button>
+					<CardMedia
+						className={classes.media}
+						image='/static/images/cards/contemplative-reptile.jpg'
+						title='Contemplative Reptile'
+					/>
+					<CardContent>
+						<Typography gutterBottom variant='h5' component='h2'>
+							{(props.post || { title: 'Loading...' }).title}
+						</Typography>
+						<Typography
+							variant='body2'
+							color='textSecondary'
+							component='p'>
+							{edit ? (
+								<TextField
+									id='outlined-basic'
+									className={classes.textField}
+									label='Edit'
+									margin='normal'
+									variant='outlined'
+									multiline
+									value={
+										(props.post || { body: 'Loading...' })
+											.body
+									}
+								/>
+							) : (
+								(props.post || { body: 'Loading...' }).body
+							)}
+						</Typography>
+					</CardContent>
+				</CardActionArea>
+				{props.user &&
+				(props.user || { developer: false }).developer ? (
+					<CardActions>
+						<Button
+							variant='contained'
+							color='#7347ed'
+							startIcon={<Icon>create</Icon>}
+							className={classes.button}
+							onClick={() => handleEdit(true)}
+							color='primary'>
+							{!edit ? <div>Edit</div> : <div>Update</div>}
+						</Button>
+						<Button
+							variant='contained'
+							color='#7347ed'
+							startIcon={<Icon>delete</Icon>}
+							className={classes.button}
+							color='primary'>
+							{!edit ? <div>Delete</div> : <div>Cancel edit</div>}
+						</Button>
+					</CardActions>
+				) : (
+					''
+				)}
+			</Card>
+			<Card>
+				<TextField
+					id='outlined-basic'
+					className={classes.textField}
+					label='Comments'
+					margin='normal'
+					variant='outlined'
+					multiline
 				/>
-				<CardContent>
-					<Typography gutterBottom variant='h5' component='h2'>
-						{(props.post || { title: 'Loading...' }).title}
-					</Typography>
-					<Typography
-						variant='body2'
-						color='textSecondary'
-						component='p'>
-						{edit ? (
-							<TextField
-								id='outlined-basic'
-								className={classes.textField}
-								label='Edit'
-								margin='normal'
-								variant='outlined'
-								multiline
-								value={
-									(props.post || { body: 'Loading...' }).body
+
+				{(
+					props.post || {
+						comments: [{ author: 'Loading', text: 'Loading' }]
+					}
+				).comments &&
+				(
+					props.post || {
+						comments: [{ author: 'Loading', text: 'Loading' }]
+					}
+				).comments.length ? (
+					<div>
+						<Typography
+							variant='body2'
+							color='textSecondary'
+							component='p'>
+							{(
+								props.post || {
+									comments: [
+										{ author: 'Loading', text: 'Loading' }
+									]
 								}
-							/>
-						) : (
-							(props.post || { body: 'Loading...' }).body
-						)}
-					</Typography>
-				</CardContent>
-			</CardActionArea>
-			{props.user && (props.user || { developer: false }).developer ? (
-				<CardActions>
-					<Button
-						variant='contained'
-						color='#7347ed'
-						startIcon={<Icon>create</Icon>}
-						className={classes.button}
-						onClick={() => handleEdit(true)}
-            color='primary'>
-						{!edit ? <div>Edit</div> : <div>Update</div>}
-					</Button>
-					<Button
-						variant='contained'
-						color='#7347ed'
-						startIcon={<Icon>delete</Icon>}
-						className={classes.button}
-						color='primary'>
-						{!edit ? <div>Delete</div> : <div>Cancel edit</div>}
-					</Button>
-				</CardActions>
-			) : (
-				''
-			)}
-		</Card>
+							).comments.map(c => {
+								return <p>{c.author}</p>;
+							})}
+						</Typography>
+						<Typography
+							variant='body2'
+							color='textSecondary'
+							component='p'>
+							{(
+								props.post || {
+									comments: [
+										{ author: 'Loading', text: 'Loading' }
+									]
+								}
+							).comments.map(c => {
+								return <p>{c.text}</p>;
+							})}
+						</Typography>
+					</div>
+				) : (
+					''
+				)}
+			</Card>
+		</div>
 	);
 }
