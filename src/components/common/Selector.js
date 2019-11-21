@@ -16,12 +16,13 @@ class Selector extends Component {
 
 	handleChange = event => {
 		this.setState({ category: event.target.value });
+		this.props.setCategory(event.target.value);
 	};
 
 	render() {
 		return (
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
-				<FormControl style={{width: "50%"}}>
+				<FormControl style={{ width: '50%' }}>
 					<InputLabel id='demo-simple-select-label'>
 						{this.props.label}
 					</InputLabel>

@@ -32,7 +32,6 @@ const PrivateRoute = ({ isLogged, ...args }) => (
   />
 );
 
-
 class App extends Component {
 
   constructor(props) {
