@@ -13,6 +13,7 @@ import Icon from '@material-ui/core/Icon';
 const useStyles = makeStyles(theme => ({
 	card: {
 		maxWidth: 845,
+		minWidth: 845,
 		maxHeight: 845,
 		width: '100%',
 		height: '68%'
