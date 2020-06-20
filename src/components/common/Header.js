@@ -148,7 +148,7 @@ function NavbarC(props) {
                         variant='h6'
                         noWrap
                     >
-                        Teste do Integrador
+                        Brunodev09 Blog
                     </Typography>
                     {props.user && props.user.token ? <Typography
                         variant='h6'
