@@ -14,6 +14,7 @@ import Logout from "./components/Logout/Logout";
 import Detail from "./components/Detail/Detail";
 
 require('dotenv').config()
+console.log(process.env)
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
