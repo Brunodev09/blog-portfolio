@@ -13,8 +13,7 @@ import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 import Detail from "./components/Detail/Detail";
 
-require('dotenv').config()
-console.log(process.env)
+require('dotenv').config();
 
 const PrivateRoute = ({ isLogged, ...args }) => (
   <Route
