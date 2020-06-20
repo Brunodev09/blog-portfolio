@@ -68,6 +68,6 @@ class Http {
 	}
 }
 
-export const httpUser = new Http(process.env.API, {});
+export const httpUser = new Http(process.env.REACT_APP_API, {});
 
 // module.exports = httpUser;
