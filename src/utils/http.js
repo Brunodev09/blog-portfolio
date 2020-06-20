@@ -68,6 +68,6 @@ class Http {
 	}
 }
 
-export const httpUser = new Http('http://localhost:5000', {});
+export const httpUser = new Http(process.env.API, {});
 
 // module.exports = httpUser;
